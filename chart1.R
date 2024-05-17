@@ -1,6 +1,5 @@
 ```{r}
 library(ggplot2)
-library(readr)
 ```
 
 ```{r}
