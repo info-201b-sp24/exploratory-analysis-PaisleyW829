@@ -15,4 +15,4 @@ ggplot(BR, aes(x = Year, y = `State Rate`, color = State)) +
   theme_minimal()
 ```
 
--   For the first research question, we chose to use the line graph, we believe this would be appropriate because it can clearly show changes over time across different states. This will allow us to identify trends and variations in teenage pregnancy rates over approximately the past decade.
+-  We chose to use the line graph, we believe this would be appropriate because it can clearly show changes over time across different states. This will allow us to identify trends and variations in teenage pregnancy rates over approximately the past decade.
