@@ -5,50 +5,92 @@ output: html_document
 
 ## Project title
 
-Give your project a concise, interesting title that summarizes the entirety of your project
+Teenagers Pregnancy Rate Analysis and Solutions in US
 
 ### Authors
 
-Names of your team members
+Paisley Wu yuewew2@uw.edu 
+Weiqi Ren wren4@uw.edu 
+Tippi Fang siyufang@uw.edu
 
 ### Date
 
-Winter 2022
+Spring 2024
 
 ### Abstract
 
-No more than three sentences that summarize your project. Focus on the very most important aspects. For example: (1) "Our main question is .... This question is important because .... To address the question, we will ...." (2) "We are concerned with ..., because .... To address this concern, we plan to ...." (3) "Consider that .... This is important because .... Accordingly, we plan to ...."
+Our main question would be exploring what the trends and factors are influencing teenage birth rates in the United States, this question is important because we believe that this topic largely related to teenager's physical and mental health, furthermore, it would be also related to the country's educational situation in each states and the abortion laws. We will concern ourselves with the variables that cause these data, and we plan to use datasets from "data.gov" and other reliable agencies, by analyzing those datasets to discover the actionable solutions for solving the current situation towards teen pregnancy rates in the US.
 
 ### Keywords
 
-3-5 keywords that summarize your project.
-(e.g., "Keywords: human physiology; bicycle exercise; Gen Z; times-series data")
+- Abortion
+- Race
+- Birth Rate
+- Teenagers
+- Education
 
 ### Introduction  
 
-Briefly introduce your project.  Include 3-5 research questions. What motivates the questions? Why are they important? (at least 200 words)
+This project would be aiming on the trends and determinants of teenage pregnancy rates in each state in the US, we are focusing on teens between the ages of 15 and 19 years old. By discovering and pairing to different abortion laws and educational conditions in each state, the goal is to reveal the correlation between these factors and the rate of teenage pregnancy. As social attitudes toward teen pregnancy become more critical, we believe there is necessary to explore deeper in this social situation. Teenage pregnancy would bring out lots of negative results, for example, affecting teenagers' mental development and physical health etc. We plan to utilize up-to-date and dynamic data from the recent decade to ensure that our research is relevant and current. This approach will allow us to further explore how different laws and educations affect teenage mental and physical health. In addition, we hope the project can highlight broader implications for public health and social policy, providing improvements for the development of targeted interventions and solutions. By identifying the key factors that influence teen pregnancy rates, our project aims call on action for policymakers to develop effective strategies to address this challenging social issue. Overall, our main goal is to provide actionable solutions that could help in reduce the teen pregnancy rates, thus improving and ensuring the well-being of teenagers across the United States.
+
+## Our Research Questions for this project:
+
+- 1.How have teenage pregnancy rates changed across different states over approximately the past decade, and what can we tell from these trends?
+ This question seeks to explore trends to understand the dynamics of teenage pregnancy and birth rate better.
+
+- 2.What is the relationship between state abortion laws and teenage pregnancy rates from different states?
+ Abortion and women’s rights has been an ongoing debate through decades, and the difference of abortion laws through different states directly affects the teenage birth rate.
+
+- 3.We would like to know how do sex education influences teenage pregnancy rates in different states?
+ Focusing on the education part is important when analyzing the data of teenage pregnancy and birth rate. This question aims to evaluate the role of education in shaping teenage sex and healthcare.
 
 ### Related Work  
 
-Describe your topic and related work in this space. You must include 3 citations to related work (URLs to similar work, high quality articles from the popular press, research papers, etc. ) Please use a standard citation style of your choice. (at least 200 words)
+We believe that the pregnancy rates in teenage groups is still a serious problem which has huge impact on public health and social policy. This project would be aimed on deeper analyze in teenage pregnancy rates' trends and determinants. It would be mainly focusing on each state's unique abortion laws and the educated level in each states, to figure out how these factors are influencing those proportion rates. In Melissa S. Kearney and Phillip B. Levine's "Why is the Teen Birth Rate in the United States So High and Why Does It Matter?", it talks about the decreasing of the education opportunities is highly related to the rise in teen pregnancy rates.
+
+- *Kearney, Melissa S., and Phillip B. Levine. 2012. "Why Is the Teen Birth Rate in the United States So High and Why Does It Matter?" Journal of Economic Perspectives, 26 (2): 141-163.
+
+On the other hand, we think the abortion laws are also playing a key role in impacting teen pregnancy rates. From Rachel K Jones and Jenna Jerman's "Abortion Incidence and Service Availability In the United States, 2014", it emphasizes that restrictive abortion laws may not lead to a lower teenage pregnancy rates, somehow it might lead to an increase in unsafe abortion occurring rates among teenagers. And also, from Gilda Sedgh, Lawrence B Finer, Akinrinola Bankole, Michelle A Eilers , and Susheela Singh's "Adolescent pregnancy, birth, and abortion rates across countries: levels and recent trends", it mentions about how effective the sex education to intervene teenage pregnancy occurring, which highlight the importance of the sex education.
+
+- *Jones RK, Jerman J. Abortion Incidence and Service Availability In the United States, 2014. Perspect Sex Reprod Health. 2017 Mar;49(1):17-27. doi: 10.1363/psrh.12015. Epub 2017 Jan 17. PMID: 28094905; PMCID: PMC5487028. *Sedgh G, Finer LB, Bankole A, Eilers MA, Singh S. Adolescent pregnancy, birth, and abortion rates across countries: levels and recent trends. J Adolesc Health. 2015 Feb;56(2):223-30. doi: 10.1016/j.jadohealth.2014.09.007. PMID: 25620306; PMCID: PMC4852976.
+
+In this project, we would base on these citations and discoveries, by applying additional analyzed datasets, for figuring out the trends and the solutions towards the topic of "Teenagers Pregnancy Rate Analysis and Solutions in US".
 
 ### The Dataset
 
-Where did you find the data? Please include a link to the data source  
-Who collected the data?  
-How was the data collected or generated?  
-Why was the data collected?  
-How many observations (rows) are in your data?  
-How many features (columns) are in the data?  
-What, if any, ethical questions or questions of power do you need to consider when working with this data?  
-What are possible limitations or problems with this data?   (at least 200 words)
+The primary dataset we'll be looking at in this project would be "U.S. and State Trends on Teen Births, 1990–2019".
+
+- We directly found and accessed this dataset can from National Center for Health Statistics, a U.S. federal agency responsible for collecting and analyzing health data to provide statistical information that guides public health and policy decisions.(https://www.cdc.gov/nchs/data-visualization/teen-births/index.htm)
+
+- We've found that this dataset was collected by NCHS, which it's the part of the CDC, a principle agency in the US.
+
+- NCHS collects all the data from a variety of health and demographic surveys, along with vital statistics records such as birth certificates. This collection offers extensive information on birth rates, featuring detailed demographic categories that enable trend analysis over time based on race, age group, and Hispanic origin.
+
+- We believe that their purpose of collecting these teen birth rate data is for monitoring and assessing the teens' health trends to inform public health policy and plans. This dataset would help to evaluate the effectiveness of health interventions for reducing teen pregnancies, also and can influence educational programs and resource allocation for family planning and sex education.
+
+```{r}
+BR_row <- nrow(US_trend_states_BR)
+BR_row
+```
+- From the code above, we could know there are 4680 observations in this data. 
+
+```{r}
+BR_col <- ncol(US_trend_states_BR)
+BR_col
+```
+- From the code above, we could know there are 8 columns in this data.
+
+- While handling this dataset, we think it requires us to ensure the privacy and confidentiality, because it involves sensitive health information of teenagers(minors). We should consider ways to avoid any potential misuse that could affect public perception or lead to discrimination against specific groups.
+
+- We've also found some of this dataset's limitations, which would probably include issues like reporting biases, where some populations might under-report or over-report births. Data accuracy might vary depending on the completeness and consistency of the records from which it was sourced. On the other hand, another limitation could be the interpretation of this dataset without considering socio-economic contexts and environmental factors that significantly influence teen birth rates.
 
 ### Implications
 
-Assuming you answer your research questions, briefly describe the expected or possible implications for technologists, designers, and policymakers. (at least 150 words)
+First of all, we think all the results we could get by analyzing this dataset could assist technologists in developing data-driven solutions, such as using big data analysis and AI technology to predict the trends in teenage pregnancy rates and provide more accurate support for policymakers. In addition, technologists can develop online platforms or social media tools to provide teenage health counseling and support services and promote teenage health education and awareness. Secondly, designers can design and improve teenage health education publicity materials according to the research results, making them more attractive and easy to understand, and increasing the participation and acceptance of adolescents. In addition, designers can work with educational institutions and community organizations to develop innovative educational games, apps, or virtual reality experiences that stimulate youth interest and engagement in health issues, thereby promoting an understanding of sex education. Also, the research results could provide important references for developing more direct and efficient policy measures to reduce teenage pregnancy rates and ensure the teenage health. For example, the government can adjust the content and scope of youth sex education courses, increase the popularity and accessibility of family planning services, and formulate stricter policies for teen childbirth.
 
 ### Limitations & Challenges
-What challenges or limitations might you need to address with your project idea more broadly? Briefly discuss. (at least 150 words)
+
+The challenges and limitations that research projects may face include: Obtaining accurate and comprehensive data on teen pregnancy rates. In some regions, data collection systems are incomplete, standards are not uniform, and data quality and reliability are not high. The quality of data may be affected by factors such as errors during the input process and measurement biases, which may influence the accuracy of teenage pregnancy data. On the other hand, teenage pregnancy is a sensitive topic, and some data may be difficult to fully access due to some privacy problems and ethical issues. What's more, the teenage pregnancy rate would also be influenced by other factors, such as educated level, teenagers' family background etc. The research of this project needs to consider the complexity and diversity of these factors to fully understand the nature and root causes of adolescent pregnancy problems. Teen pregnancy rates can be influenced by a variety of data sources, which may come from healthcare facilities or simply community statistics. There may be differences between different data sources, which need to be considered and analyzed together to obtain more comprehensive and accurate data on teenage pregnancy rates.
 
 ### Summary Information
 
