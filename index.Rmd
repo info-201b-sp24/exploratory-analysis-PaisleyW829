@@ -104,14 +104,21 @@ Describe why you included the table and what information it reveals
 
 ### Chart 1
 
-Include a chart
+- For the first research question, we chose to use the line graph, we believe this would be appropriate because it can clearly show changes over time across different states. This will allow us to identify trends and variations in teenage pregnancy rates over approximately the past decade.
 
-Describe why you chose this chart and what information it reveals
+```{r}
+library(ggplot2)
+library(dplyr)
 
-Here's an example of how to run an R script inside an RMarkdown file:
+BR <- read_csv("U.S._and_State_Trends_on_Teen_Births.csv")
 
-``````{r, echo = FALSE, code = readLines("chart1_example.R")}
+ggplot(BR, aes(x = Year, y = `State Rate`, color = State)) +
+  geom_line() +
+  labs(title = "Trends in Teenage Pregnancy Rates by State", x = "Year", y = "Teenage Pregnancy Rate") +
+  theme_minimal()
+
 ```
+
 
 ### Chart 2
 
