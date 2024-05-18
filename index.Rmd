@@ -94,20 +94,119 @@ The challenges and limitations that research projects may face include: Obtainin
 
 ### Summary Information
 
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
+The dataset includes 4680 observations across 8 variables. The maximum state rate is 113.7, while the minimum state rate recorded is 1.7. This highlights the variation in teen birth rates among different states. The 'State Rate' column, which records the rate of teen births by state, shows a mean value of 42.3073931623931, indicating the average teen birth rate across all states and years in the dataset. Additionally, the median of state rate is 37.2, which suggest that about half of the observations have a state rate below this value, and half are above. The year with the highest recorded state teen birth rate in the dataset is in 1993. These findings provide a comprehensive overview of the teen birth rates across different states in different years, illustrating variations and tendencies of the dataset.
+
+```{r}
+library(dplyr)
+library(tidyverse)
+
+generate_summary_info <- function(my_dataframe) {
+  summary_info <- list()
+  
+##Number of observations
+  summary_info$num_observations <- nrow(my_dataframe)
+  
+  4680
+  
+##Number of variables
+  summary_info$num_variables <- ncol(my_dataframe)
+  
+  8
+  
+##Maximum value of the 'State Rate' column
+  summary_info$max_state_rate <- max(as.numeric(my_dataframe$`State Rate`), na.rm = TRUE)
+  
+  133.7
+  
+##Minimum value of the 'State Rate' column
+  summary_info$min_state_rate <- min(as.numeric(my_dataframe$`State Rate`), na.rm = TRUE)
+  
+  1.7
+  
+##Mean of the 'State Rate' column
+  summary_info$mean_state_rate <- mean(as.numeric(my_dataframe$`State Rate`), na.rm = TRUE)
+  
+  42.3073931623931
+  
+##Median of the 'State Rate' column
+  summary_info$median_state_rate <- median(as.numeric(my_dataframe$`State Rate`), na.rm = TRUE)
+  
+  37.2
+  
+##Year with the highest 'State Rate'
+  summary_info$year_max_state_rate <- my_dataframe %>%
+    filter(as.numeric(`State Rate`) == max(as.numeric(`State Rate`), na.rm = TRUE)) %>%
+    select(Year) %>%
+    pull(Year)
+  
+  return(summary_info)
+}
+
+1993
+
+file_path <- file.choose()
+print(paste("Selected file path:", file_path))
+
+my_dataframe <- read_csv(file_path)
+print("Data loaded successfully.")
+
+print(head(my_dataframe))
+
+summary_values <- generate_summary_info(my_dataframe)
+
+
+
+print(paste("Number of observations:", summary_values$num_observations))
+print(paste("Number of variables:", summary_values$num_variables))
+print(paste("Maximum State Rate:", summary_values$max_state_rate))
+print(paste("Minimum State Rate:", summary_values$min_state_rate))
+print(paste("Mean of State Rate:", summary_values$mean_state_rate))
+print(paste("Median State Rate:", summary_values$median_state_rate))
+print(paste("Year with the highest State Rate:", summary_values$year_max_state_rate))
+
+```
 
 ### Table
 
-Include a table of aggregate information
+One of these two tables is the annual average teen birth rate and the total number of teen births in each state, while the other is a more summarized table that contains the average teen birth rate and the total number of teen births in the United States for each year. The state table can help us more clearly see the annual data of teen birth in different states, facilitate us to make a clearer comparison,and reveal the possible reasons behind the data changes, such as which state may implement relevant policies and which state does not. The US birth table reveals the overall data of this country.Through the comparison between different years, we can guess whether the United States has taken actions control this behavior and whether the teenagers' sexual awareness has increased.
 
-Describe why you included the table and what information it reveals
+```{r}
+library(dplyr)
+teen_births_data <- BR
+
+colnames(teen_births_data)
+
+teen_births_data <- teen_births_data %>%
+  rename(
+    StateRate = `State Rate`
+  )
+
+state_birth <- teen_births_data %>%
+  group_by(State, Year) %>%
+  summarise(
+    AverageStateRate = round(mean(StateRate, na.rm = TRUE), 2),
+    TotalStateBirths = sum(`State Births`, na.rm = TRUE) 
+  ) %>%
+  arrange(State, Year)
+
+us_birth <- teen_births_data %>%
+  group_by(Year) %>%
+  summarise(
+    AverageUSBirthRate = round(mean(`U.S. Birth Rate`, na.rm = TRUE), 2),
+    TotalUSBirths = sum(`U.S. Births`, na.rm = TRUE)
+  ) %>%
+  arrange(Year)
+
+
+```
 
 ### Chart 1
 
-- For the first research question, we chose to use the line graph, we believe this would be appropriate because it can clearly show changes over time across different states. This will allow us to identify trends and variations in teenage pregnancy rates over approximately the past decade.
+-  We believe this line plot would be an ideal for visualizing the trends in teen birth rates by state over time, due to its ability to clearly show changes through connected data points for each state. By incorporating different colors for each state, the plot facilitates easy comparisons, allowing observers to quickly discern which states have higher or lower rates and how these rates evolve relative to each other. This visualization is particularly valuable for identifying trends, fluctuations, and the impacts of different state policies or healthcare access on teen birth rates. 
 
 ```{r}
 library(ggplot2)
+library(tidyverse)
 library(dplyr)
 
 BR <- read_csv("U.S._and_State_Trends_on_Teen_Births.csv")
@@ -122,12 +221,41 @@ ggplot(BR, aes(x = Year, y = `State Rate`, color = State)) +
 
 ### Chart 2
 
-Include a chart
+- We decided to choose the line and point plot for visualizing the U.S. birth rate over the years primarily because it could effectively and clearly illustrate the trends over time. Line and point plots are excellent for time series data, allowing clear visualization of changes in the birth rate—whether it's rising, declining, or remaining stable. This type of plot provides a continuous view of data, highlighting relationships and movements over the years, which is crucial for understanding demographic dynamics. It can showcase the trends, detect volatility, and identify anomalies, offering a comprehensive overview of how external factors might influence birth rates. 
 
-Describe why you chose this chart and what information it reveals
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+library(dplyr)
+
+BR <- read_csv("U.S._and_State_Trends_on_Teen_Births.csv")
+
+ggplot(BR, aes(x = Year, y = `U.S. Birth Rate`)) +
+  geom_line() +  # Line plot
+  geom_point() + # Add points
+  labs(title = "U.S. Birth Rate Over the Years", x = "Year", y = "Birth Rate (per 1,000 people)") +
+  theme_minimal()
+```
 
 ### Chart 3
 
-Include a chart
+- We've chose a bar chart to do this visualization for the average teen birth rates per state because it is particularly effective for comparing categorical data. Each bar represents a state, allowing for straightforward comparisons of their average rates. This visualization is excellent for assessing and comparing the magnitude of teen birth rates across different states at a glance. The orientation and length of the bars make it easy to identify which states have higher or lower averages, highlighting areas that might require more focused interventions or further study. By using distinct colors for each state and rotating the x-axis labels, the chart ensures clarity and readability, enhancing the viewer's ability to digest and interpret the data efficiently. 
 
-Describe why you chose this chart and what information it reveals
+```{r}
+library(ggplot2)
+library(tidyverse)
+library(dplyr)
+
+BR <- read_csv("U.S._and_State_Trends_on_Teen_Births.csv")
+
+average_rates <- BR %>%
+  group_by(State) %>%
+  summarise(AverageRate = mean(`State Rate`, na.rm = TRUE))
+
+ggplot(average_rates, aes(x = reorder(State, -AverageRate), y = AverageRate, fill = State)) +
+  geom_bar(stat = "identity") + # Using identity to use the actual values
+  labs(title = "Average Teenage Pregnancy Rates by State", x = "State", y = "Average Pregnancy Rate") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
