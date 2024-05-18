@@ -15,4 +15,4 @@ ggplot(BR, aes(x = Year, y = `State Rate`, color = State)) +
   theme_minimal()
 ```
 
--  We chose to use the line graph, we believe this would be appropriate because it can clearly show changes over time across different states. This will allow us to identify trends and variations in teenage pregnancy rates over approximately the past decade.
+-  We believe this line plot would be an ideal for visualizing the trends in teenage pregnancy rates by state over time, due to its ability to clearly show changes through connected data points for each state. By incorporating different colors for each state, the plot facilitates easy comparisons, allowing observers to quickly discern which states have higher or lower rates and how these rates evolve relative to each other. This visualization is particularly valuable for identifying trends, fluctuations, and the impacts of different state policies or healthcare access on teenage pregnancy rates. 
