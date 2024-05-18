@@ -64,3 +64,14 @@ print(paste("Minimum State Rate:", summary_values$min_state_rate))
 print(paste("Mean of State Rate:", summary_values$mean_state_rate))
 print(paste("Median State Rate:", summary_values$median_state_rate))
 print(paste("Year with the highest State Rate:", summary_values$year_max_state_rate))
+
+#The dataset includes 784 observations across 8 variables. 
+#The maximum state rate is 113.8, while the minimum state rate recorded is 4.5.
+#This highlights the variation in teen birth rates among different states. 
+#The 'State Rate' column, which records the rate of teen births by state, shows a mean value of 37.2,
+#indicating the average teen birth rate across all states and years in the dataset. 
+#Additionally, the median of state rate is 37.4, 
+#which suggest that about half of the observations have a state rate below this value, and half are above.
+#The year with the highest recorded state teen birth rate in the dataset is in 1991. 
+#These findings provide a comprehensive overview of the teen birth rates across different states 
+#in different years, illustrating variations and tendencies of the dataset.
