@@ -1,6 +1,8 @@
 library(dplyr)
 library(tidyverse)
 
+US_trend_states_BR <- read_csv("/Users/weiqiren/Desktop/INFO201/exploratory-analysis-PaisleyW829/NCHS_-_U.S._and_State_Trends_on_Teen_Births.csv")
+
 generate_summary_info <- function(my_dataframe) {
   summary_info <- list()
   
@@ -45,14 +47,6 @@ generate_summary_info <- function(my_dataframe) {
 
 1993
 
-file_path <- file.choose()
-print(paste("Selected file path:", file_path))
-
-my_dataframe <- read_csv(file_path)
-print("Data loaded successfully.")
-
-print(head(my_dataframe))
-
 summary_values <- generate_summary_info(my_dataframe)
 
 
@@ -65,13 +59,13 @@ print(paste("Mean of State Rate:", summary_values$mean_state_rate))
 print(paste("Median State Rate:", summary_values$median_state_rate))
 print(paste("Year with the highest State Rate:", summary_values$year_max_state_rate))
 
-#The dataset includes 784 observations across 8 variables. 
-#The maximum state rate is 113.8, while the minimum state rate recorded is 4.5.
+#The dataset includes 4680 observations across 8 variables. 
+#The maximum state rate is 113.7, while the minimum state rate recorded is 1.7.
 #This highlights the variation in teen birth rates among different states. 
-#The 'State Rate' column, which records the rate of teen births by state, shows a mean value of 37.2,
+#The 'State Rate' column, which records the rate of teen births by state, shows a mean value of 42.3073931623931,
 #indicating the average teen birth rate across all states and years in the dataset. 
-#Additionally, the median of state rate is 37.4, 
+#Additionally, the median of state rate is 37.2, 
 #which suggest that about half of the observations have a state rate below this value, and half are above.
-#The year with the highest recorded state teen birth rate in the dataset is in 1991. 
+#The year with the highest recorded state teen birth rate in the dataset is in 1993. 
 #These findings provide a comprehensive overview of the teen birth rates across different states 
 #in different years, illustrating variations and tendencies of the dataset.
